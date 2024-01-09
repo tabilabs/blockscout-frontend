@@ -29,6 +29,8 @@ const AdBanner = ({ className, isLoading }: { className?: string; isLoading?: bo
     }
   })();
 
+  return null;
+
   return (
     <Skeleton
       className={ className }
