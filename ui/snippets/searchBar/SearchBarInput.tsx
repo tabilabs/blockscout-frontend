@@ -1,4 +1,4 @@
-import { InputGroup, Input, InputLeftElement, chakra, useColorModeValue, forwardRef, InputRightElement } from '@chakra-ui/react';
+import { InputGroup, Input, InputLeftElement, chakra, useColorModeValue, forwardRef, InputRightElement, useColorMode } from '@chakra-ui/react';
 import throttle from 'lodash/throttle';
 import React from 'react';
 import type { ChangeEvent, FormEvent, FocusEvent } from 'react';
@@ -61,6 +61,11 @@ const SearchBarInput = ({ onChange, onSubmit, isHomepage, onFocus, onBlur, onHid
   const bgColor = useColorModeValue('white', 'black');
   const transformMobile = scrollDirection !== 'down' ? 'translateY(0)' : 'translateY(-100%)';
 
+  const isDark = () => {
+    const { colorMode } = useColorMode();
+    return colorMode === 'dark';
+  }
+
   return (
     <chakra.form
       ref={ innerRef }
@@ -69,8 +74,11 @@ const SearchBarInput = ({ onChange, onSubmit, isHomepage, onFocus, onBlur, onHid
       onBlur={ onBlur }
       onFocus={ onFocus }
       w="100%"
-      backgroundColor={ bgColor }
+      backgroundColor={ isHomepage ? (isDark() ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)') : bgColor }
       borderRadius={{ base: isHomepage ? 'base' : 'none', lg: 'base' }}
+      borderColor={isHomepage ? (isDark() ? 'rgba(255, 255, 255, 0.20)' : 'rgba(255, 255, 255, 0.30)') : ''}
+      backdropFilter={isHomepage ? "blur(10px)" : ''}
+      borderWidth={isHomepage ? 2 : 0}
       position={{ base: isHomepage ? 'static' : 'absolute', lg: 'static' }}
       top={{ base: isHomepage ? 0 : 55, lg: 0 }}
       left="0"
@@ -103,7 +111,7 @@ const SearchBarInput = ({ onChange, onSubmit, isHomepage, onFocus, onBlur, onHid
           onChange={ handleChange }
           border={ isHomepage ? 'none' : '2px solid' }
           borderColor={ useColorModeValue('blackAlpha.100', 'whiteAlpha.200') }
-          _focusWithin={{ _placeholder: { color: 'gray.300' } }}
+          _focusWithin={isHomepage ? {} : { _placeholder: { color: 'gray.300' } }}
           color={ useColorModeValue('black', 'white') }
           value={ value }
         />

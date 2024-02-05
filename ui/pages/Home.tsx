@@ -1,4 +1,4 @@
-import { Box, Heading, Flex } from '@chakra-ui/react';
+import { Box, Heading, Flex, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
@@ -13,15 +13,20 @@ import SearchBar from 'ui/snippets/searchBar/SearchBar';
 import WalletMenuDesktop from 'ui/snippets/walletMenu/WalletMenuDesktop';
 
 const Home = () => {
+  const { colorMode } = useColorMode();
   return (
     <Box as="main">
       <Box
         w="100%"
-        background={ config.UI.homepage.plate.background }
+        // background={ config.UI.homepage.plate.background }
+        backgroundImage={colorMode === 'dark' ? '/static/rect-banner-black.svg' : '/static/rect-banner-white.svg' }
         borderRadius="24px"
         padding={{ base: '24px', lg: '48px' }}
         minW={{ base: 'unset', lg: '900px' }}
         data-label="hero plate"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+        // backgroundSize="100% auto"
       >
         <Flex mb={{ base: 6, lg: 8 }} justifyContent="space-between" alignItems="center">
           <Heading
