@@ -324,13 +324,13 @@ const Footer = () => {
             Community
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://twitter.com/Tabi_NFT')}>
-            Twitter
+            <img src={isDark() ? '/static/twitter-dark.svg' : '/static/twitter-light.svg'} className={cx(baseStyles.communityIcon)}/>Twitter
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://discord.com/invite/tabinft')}>
-            Discord
+            <img src={isDark() ? '/static/discord-dark.svg' : '/static/discord-light.svg'} className={cx(baseStyles.communityIcon)}/>Discord
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://blog.tabi.lol/#/')}>
-            Blog
+            <img src={isDark() ? '/static/blog-dark.svg' : '/static/blog-light.svg'} className={cx(baseStyles.communityIcon)}/>Blog
           </div>
         </div>
       </Flex>
@@ -392,7 +392,7 @@ const baseStyles = {
   categoryItem: css`
     display: flex;
     padding-right: 38px;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     align-self: stretch;
     color: #4A5568;
@@ -403,9 +403,15 @@ const baseStyles = {
     line-height: 18px; /* 150% */
     height: 32px;
     cursor: pointer;
+    gap: 11px;
     &:hover {
       opacity: 0.6;
     }
+  `,
+
+  communityIcon: css`
+    width: 18px;
+    height: 18px;
   `,
 }
 export default React.memo(Footer);
