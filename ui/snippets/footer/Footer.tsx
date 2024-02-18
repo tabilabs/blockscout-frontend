@@ -405,7 +405,7 @@ const baseStyles = {
     cursor: pointer;
     gap: 11px;
     &:hover {
-      opacity: 0.6;
+      text-decoration: underline;
     }
   `,
 

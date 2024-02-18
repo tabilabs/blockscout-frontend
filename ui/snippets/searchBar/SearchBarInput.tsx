@@ -114,6 +114,16 @@ const SearchBarInput = ({ onChange, onSubmit, isHomepage, onFocus, onBlur, onHid
           _focusWithin={isHomepage ? {} : { _placeholder: { color: 'gray.300' } }}
           color={ useColorModeValue('black', 'white') }
           value={ value }
+          _placeholder={
+            {
+              color: isDark() ? "rgba(255, 255, 255, 0.4)" : "rgba(16, 17, 18, 0.48)",
+            }
+          }
+          _focus={{
+            _placeholder: {
+              color: isDark() ? "rgba(255, 255, 255, 0.9)" : "rgba(16, 17, 18, 0.25)", // focus 时的颜色
+            }
+          }}
         />
         { value && (
           <InputRightElement top={{ base: isHomepage ? '18px' : 2, lg: '18px' }} right={ 2 }>
