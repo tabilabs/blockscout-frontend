@@ -34,7 +34,7 @@ const Home = () => {
             size={{ base: 'md', lg: 'xl' }}
             lineHeight={{ base: '32px', lg: '50px' }}
             fontWeight={ 600 }
-            color={ config.UI.homepage.plate.textColor }
+            color={ colorMode === 'dark' ? '#FFF' : '#101112' }
           >
             { config.chain.name } explorer
           </Heading>
