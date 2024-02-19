@@ -61,28 +61,28 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
       aria-label="Link to main page"
     >
       { /* big logo */ }
-      <img
-        src={ isCollapsed ? '/static/icon-placeholder-1.svg' : colorMode === 'dark' ? '/static/logo-placeholder-black-1.svg' : '/static/logo-placeholder-white-1.svg' }
+      {/*<img*/}
+      {/*  src={ isCollapsed ? '/static/icon-placeholder-1.svg' : colorMode === 'dark' ? '/static/logo-placeholder-black-1.svg' : '/static/logo-placeholder-white-1.svg' }*/}
+      {/*/>*/}
+      <Image
+        w="auto"
+        h="100%"
+        src={ colorMode === 'dark' ? '/static/logo-placeholder-black-1.svg' : '/static/logo-placeholder-white-1.svg' }
+        alt={ `${ config.chain.name } network logo` }
+        // fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }
+        display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
+        // style={ logoStyle }
       />
-      {/*<Image*/}
-      {/*  w="auto"*/}
-      {/*  h="100%"*/}
-      {/*  src={ logoSrc }*/}
-      {/*  alt={ `${ config.chain.name } network logo` }*/}
-      {/*  fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }*/}
-      {/*  display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}*/}
-      {/*  style={ logoStyle }*/}
-      {/*/>*/}
       {/*{ /* small logo */ }
-      {/*<Image*/}
-      {/*  w="auto"*/}
-      {/*  h="100%"*/}
-      {/*  src={ iconSrc }*/}
-      {/*  alt={ `${ config.chain.name } network logo` }*/}
-      {/*  fallback={ <LogoFallback isCollapsed={ isCollapsed } isSmall/> }*/}
-      {/*  display={{ base: 'none', lg: isCollapsed === false ? 'none' : 'block', xl: isCollapsed ? 'block' : 'none' }}*/}
-      {/*  style={ iconStyle }*/}
-      {/*/>*/}
+      <Image
+        w="auto"
+        h="100%"
+        src={ '/static/icon-placeholder-1.svg' }
+        alt={ `${ config.chain.name } network logo` }
+        // fallback={ <LogoFallback isCollapsed={ isCollapsed } isSmall/> }
+        display={{ base: 'none', lg: isCollapsed === false ? 'none' : 'block', xl: isCollapsed ? 'block' : 'none' }}
+        // style={ iconStyle }
+      />
     </Box>
   );
 };

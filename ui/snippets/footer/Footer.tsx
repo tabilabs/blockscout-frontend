@@ -206,7 +206,7 @@ const Footer = () => {
           Add Tabi testnet
         </div>
         <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
-        <Text mt={ 3 } fontSize="xs">
+        <Text mt={ 3 } fontSize="xs" mr={10}>
           Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
@@ -292,9 +292,10 @@ const Footer = () => {
         flexDirection={'row'}
         justifyContent={{lg: 'flex-end'}}
         // mb={{ base: 5, lg: 10 }}
+        mt={{base: 30, lg: 0}}
         // _empty={{ display: 'none' }}
       >
-        <div className={cx(baseStyles.flexColumn)}>
+        <div className={cx(baseStyles.categoryWrap)}>
           <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
             Tabi
           </div>
@@ -305,7 +306,7 @@ const Footer = () => {
             Tabi Voyage
           </div>
         </div>
-        <div className={cx(baseStyles.flexColumn)}>
+        <div className={cx(baseStyles.categoryWrap)}>
           <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
             Developers
           </div>
@@ -319,7 +320,7 @@ const Footer = () => {
             Faucet
           </div>
         </div>
-        <div className={cx(baseStyles.flexColumn)}>
+        <div className={cx(baseStyles.categoryWrap)}>
           <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
             Community
           </div>
@@ -330,10 +331,11 @@ const Footer = () => {
             <img src={isDark() ? '/static/discord-dark.svg' : '/static/discord-light.svg'} className={cx(baseStyles.communityIcon)}/>Discord
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://blog.tabi.lol/#/')}>
-            <img src={isDark() ? '/static/blog-dark.svg' : '/static/blog-light.svg'} className={cx(baseStyles.communityIcon)}/>Blog
+            <img src={isDark() ? '/static/blog-dark.png' : '/static/blog-light.png'} className={cx(baseStyles.communityIcon)}/>Blog
           </div>
         </div>
       </Flex>
+
 
       {/*<div className={cx(baseStyles.flexRow)} style={{gridArea: 'links-bottom'}}>*/}
 
@@ -369,14 +371,18 @@ const baseStyles = {
     flex-direction: row;
   `,
 
-  flexColumn: css`
+  categoryWrap: css`
+    width: 160px;
     display: flex;
     flex-direction: column;
+    @media (max-width: 520px) {
+      width: auto;
+      flex: 1;
+    }
   `,
 
   categoryTitle: css`
     display: flex;
-    width: 160px;
     height: 36px;
     flex-direction: column;
     align-items: flex-start;
