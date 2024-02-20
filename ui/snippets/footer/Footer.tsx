@@ -321,6 +321,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={cx(baseStyles.categoryWrap)}>
+
           <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
             Community
           </div>
