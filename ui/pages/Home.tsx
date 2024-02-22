@@ -19,7 +19,7 @@ const Home = () => {
       <Box
         w="100%"
         // background={ config.UI.homepage.plate.background }
-        backgroundImage={{base: colorMode === 'dark' ? '/static/rect-banner-black-mobile.svg' : '/static/rect-banner-white-mobile.svg', lg: colorMode === 'dark' ? '/static/rect-banner-black.svg' : '/static/rect-banner-white.svg'}}
+        backgroundImage={{base: colorMode === 'dark' ? '/static/rect-banner-black-mobile.svg' : '/static/rect-banner-white-mobile.svg', sm: colorMode === 'dark' ? '/static/rect-banner-black.svg' : '/static/rect-banner-white.svg'}}
         borderRadius="24px"
         padding={{ base: '24px', lg: '48px' }}
         minW={{ base: 'unset', lg: '900px' }}
