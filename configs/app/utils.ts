@@ -3,6 +3,23 @@ import * as regexp from 'lib/regexp';
 
 export const replaceQuotes = (value: string | undefined) => value?.replaceAll('\'', '"');
 
+if (isBrowser()) {
+  window.__envs = {
+    NEXT_PUBLIC_GIT_TAG: 'v1.21.1',
+    NEXT_PUBLIC_API_HOST: 'testnet-api.tabiscan.com',
+    NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL: 'wss',
+    NEXT_PUBLIC_GIT_COMMIT_SHA: '2500839f',
+    NEXT_PUBLIC_VISUALIZE_API_HOST: 'http://testnet-api.tabiscan.com:8081',
+    NEXT_PUBLIC_APP_HOST: 'testnet.tabiscan.com',
+    NEXT_PUBLIC_APP_PORT: '3000',
+    NEXT_PUBLIC_APP_INSTANCE: 'testnet.tabiscan.com',
+    NEXT_PUBLIC_API_PROTOCOL: 'https',
+    NEXT_PUBLIC_APP_ENV: 'development',
+    NEXT_PUBLIC_STATS_API_HOST: 'https://testnet-api.tabiscan.com',
+    NEXT_PUBLIC_API_PORT: '443',
+  };
+}
+
 export const getEnvValue = (envName: string) => {
   // eslint-disable-next-line no-restricted-properties
   const envs = isBrowser() ? window.__envs : process.env;
