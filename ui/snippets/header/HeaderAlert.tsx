@@ -8,7 +8,7 @@ const HeaderAlert = () => {
   return (
     <Flex flexDir="column" rowGap={ 3 } mb={ 6 } _empty={{ display: 'none' }}>
       <MaintenanceAlert/>
-      <IndexingBlocksAlert/>
+      {/*<IndexingBlocksAlert/>*/}
     </Flex>
   );
 };
