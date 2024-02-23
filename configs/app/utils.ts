@@ -17,6 +17,7 @@ if (isBrowser()) {
     NEXT_PUBLIC_APP_ENV: 'development',
     NEXT_PUBLIC_STATS_API_HOST: 'https://testnet-api.tabiscan.com',
     NEXT_PUBLIC_API_PORT: '443',
+    NEXT_PUBLIC_NETWORK_ID: '9789',
   };
 }
 
