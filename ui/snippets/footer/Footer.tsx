@@ -284,7 +284,7 @@ const Footer = () => {
       }}
     >
 
-      { renderNetworkInfo({ lg: 'network' }) }
+      {/*{ renderNetworkInfo({ lg: 'network' }) }*/}
       { renderProjectInfo({ lg: 'info' }) }
 
       <Flex
