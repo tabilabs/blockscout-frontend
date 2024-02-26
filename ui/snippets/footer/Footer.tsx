@@ -313,9 +313,9 @@ const Footer = () => {
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://docs.tabichain.com/')}>
             Docs
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://github.com/tabilabs')}>
-            Github
-          </div>
+          {/*<div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://github.com/tabilabs')}>*/}
+          {/*  Github*/}
+          {/*</div>*/}
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://faucet.testnet.tabichain.com/')}>
             Faucet
           </div>
@@ -325,7 +325,7 @@ const Footer = () => {
           <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
             Community
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://twitter.com/Tabi_NFT')}>
+          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://twitter.com/Tabichain')}>
             <img src={isDark() ? '/static/twitter-dark.svg' : '/static/twitter-light.svg'} className={cx(baseStyles.communityIcon)}/>Twitter
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://discord.com/invite/tabinft')}>

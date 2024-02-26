@@ -15,9 +15,16 @@ if (isBrowser()) {
     NEXT_PUBLIC_APP_INSTANCE: 'testnet.tabiscan.com',
     NEXT_PUBLIC_API_PROTOCOL: 'https',
     NEXT_PUBLIC_APP_ENV: 'development',
-    NEXT_PUBLIC_STATS_API_HOST: 'https://testnet-api.tabiscan.com',
+    // NEXT_PUBLIC_STATS_API_HOST: 'https://testnet-api.tabiscan.com',
     NEXT_PUBLIC_API_PORT: '443',
     NEXT_PUBLIC_NETWORK_ID: '9789',
+    NEXT_PUBLIC_NETWORK_NAME: 'Tabi Testnet',
+    NEXT_PUBLIC_NETWORK_SHORT_NAME: 'Tabi',
+    NEXT_PUBLIC_NETWORK_CURRENCY_NAME: 'Tabi',
+    NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL: 'TABI',
+    NEXT_PUBLIC_NETWORK_GOVERNANCE_TOKEN_SYMBOL: 'TABI',
+    NEXT_PUBLIC_NETWORK_RPC_URL: 'https://rpc.testnet.tabichain.com',
+    NEXT_PUBLIC_IS_TESTNET: 'true'
   };
 }
 
