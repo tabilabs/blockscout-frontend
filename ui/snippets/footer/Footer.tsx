@@ -180,25 +180,30 @@ const Footer = () => {
         <div
           className={cx(
             css`
-            color: #2B6CB0;
-            font-family: Inter;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 18px; /* 128.571% */
-            display: flex;
-            padding: 0px 12px;
-            align-items: center;
-            border-radius: 8px;
-            border: 2px solid #2B6CB0;
-            cursor: pointer;
-            width: 180px;
-            height: 32px;
-            marginBottom: 30px;
-            &:hover {
-              opacity: 0.6;
-            }
-          `,
+          color: #2B6CB0;
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 18px; /* 128.571% */
+          display: flex;
+          padding: 0px 12px;
+          align-items: center;
+          border-radius: 8px;
+          border: 2px solid #2B6CB0;
+          cursor: pointer;
+          width: 180px;
+          height: 32px;
+          marginBottom: 30px;
+          &:hover {
+            opacity: 0.6;
+          }
+        `,
+            css`
+          @media (max-width: 480px) {
+            display: none;
+          }
+          `
           )}
           onClick={addTabiChain}
         >
