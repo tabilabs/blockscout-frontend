@@ -24,7 +24,6 @@ if (isBrowser()) {
     NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL: 'TABI',
     NEXT_PUBLIC_NETWORK_GOVERNANCE_TOKEN_SYMBOL: 'TABI',
     NEXT_PUBLIC_NETWORK_RPC_URL: 'https://rpc.testnet.tabichain.com',
-    NEXT_PUBLIC_IS_TESTNET: 'true'
   };
 }
 
