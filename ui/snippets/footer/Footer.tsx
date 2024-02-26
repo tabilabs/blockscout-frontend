@@ -328,7 +328,7 @@ const Footer = () => {
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://twitter.com/Tabichain')}>
             <img src={isDark() ? '/static/twitter-dark.svg' : '/static/twitter-light.svg'} className={cx(baseStyles.communityIcon)}/>Twitter
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://discord.com/invite/tabinftofficial')}>
+          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://discord.com/invite/tabichain')}>
             <img src={isDark() ? '/static/discord-dark.svg' : '/static/discord-light.svg'} className={cx(baseStyles.communityIcon)}/>Discord
           </div>
           <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://blog.tabi.lol/#/')}>
