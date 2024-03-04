@@ -41,7 +41,9 @@ export function app(): CspDev.DirectiveDescriptor {
 
     'connect-src': [
       'testnet-api.tabiscan.com',
+      'testnet-api2.tabiscan.com',
       'wss://testnet-api.tabiscan.com',
+      'wss://testnet-api2.tabiscan.com',
 
       KEY_WORDS.SELF,
       ...MAIN_DOMAINS,
