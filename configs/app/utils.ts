@@ -6,7 +6,7 @@ export const replaceQuotes = (value: string | undefined) => value?.replaceAll('\
 if (isBrowser()) {
   window.__envs = {
     NEXT_PUBLIC_GIT_TAG: 'v1.21.1',
-    NEXT_PUBLIC_API_HOST: 'testnet-api.tabiscan.com',
+    NEXT_PUBLIC_API_HOST: 'testnet-api2.tabiscan.com',
     NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL: 'wss',
     NEXT_PUBLIC_GIT_COMMIT_SHA: '2500839f',
     NEXT_PUBLIC_VISUALIZE_API_HOST: 'http://testnet-api2.tabiscan.com:8081',
