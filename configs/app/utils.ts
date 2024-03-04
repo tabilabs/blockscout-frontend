@@ -9,7 +9,7 @@ if (isBrowser()) {
     NEXT_PUBLIC_API_HOST: 'testnet-api.tabiscan.com',
     NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL: 'wss',
     NEXT_PUBLIC_GIT_COMMIT_SHA: '2500839f',
-    NEXT_PUBLIC_VISUALIZE_API_HOST: 'http://testnet-api.tabiscan.com:8081',
+    NEXT_PUBLIC_VISUALIZE_API_HOST: 'http://testnet-api2.tabiscan.com:8081',
     NEXT_PUBLIC_APP_HOST: 'testnet.tabiscan.com',
     NEXT_PUBLIC_APP_PORT: '3000',
     NEXT_PUBLIC_APP_INSTANCE: 'testnet.tabiscan.com',
@@ -24,7 +24,7 @@ if (isBrowser()) {
     NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL: 'TABI',
     NEXT_PUBLIC_NETWORK_GOVERNANCE_TOKEN_SYMBOL: 'TABI',
     NEXT_PUBLIC_NETWORK_RPC_URL: 'https://rpc.testnet.tabichain.com',
-    NEXT_PUBLIC_GRAPHIQL_TRANSACTION: '0xb6852bed1ad4251cc8b98170e771d8703e721b5a0cd33253f2b744466dfa112c'
+    NEXT_PUBLIC_GRAPHIQL_TRANSACTION: '0xb6852bed1ad4251cc8b98170e771d8703e721b5a0cd33253f2b744466dfa112c',
   };
 }
 
