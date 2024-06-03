@@ -26,6 +26,16 @@ const TokenDetails = ({ tokenQuery }: Props) => {
   const router = useRouter();
   const hash = router.query.hash?.toString();
 
+  const {
+    exchange_rate: exchangeRate,
+    total_supply: totalSupply,
+    circulating_market_cap: marketCap,
+    decimals,
+    symbol,
+    type,
+    holders: tokenHolders,
+  } = tokenQuery.data || {};
+
   const tokenCountersQuery = useApiQuery('token_counters', {
     pathParams: { hash },
     queryOptions: { enabled: Boolean(router.query.hash), placeholderData: TOKEN_COUNTERS },
@@ -44,7 +54,11 @@ const TokenDetails = ({ tokenQuery }: Props) => {
   }, [ hash, router ]);
 
   const countersItem = useCallback((item: 'token_holders_count' | 'transfers_count') => {
-    const itemValue = tokenCountersQuery.data?.[item];
+    let itemValue = tokenCountersQuery.data?.[item];
+    if (item === 'token_holders_count') {
+      itemValue = tokenHolders || itemValue;
+    }
+
     if (!itemValue) {
       return 'N/A';
     }
@@ -61,20 +75,11 @@ const TokenDetails = ({ tokenQuery }: Props) => {
         </Link>
       </Skeleton>
     );
-  }, [ tokenCountersQuery.data, tokenCountersQuery.isPlaceholderData, changeUrlAndScroll ]);
+  }, [ tokenCountersQuery.data, tokenCountersQuery.isPlaceholderData, changeUrlAndScroll, tokenHolders ]);
 
   if (tokenQuery.isError) {
     throw Error('Token fetch error', { cause: tokenQuery.error as unknown as Error });
   }
-
-  const {
-    exchange_rate: exchangeRate,
-    total_supply: totalSupply,
-    circulating_market_cap: marketCap,
-    decimals,
-    symbol,
-    type,
-  } = tokenQuery.data || {};
 
   let totalSupplyValue;
 

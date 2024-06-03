@@ -131,7 +131,7 @@ const Footer = () => {
     if (typeof window.ethereum !== 'undefined') {
       const ethereum = window.ethereum;
 
-      const bscNetwork = {
+      const tabiNetwork = {
         chainId: '0x263d',
         chainName: 'Tabi Testnet',
         nativeCurrency: {
@@ -139,15 +139,15 @@ const Footer = () => {
           symbol: 'TABI',
           decimals: 18,
         },
-        rpcUrls: ['https://rpc.testnet.tabichain.com'], // BSC节点的RPC URL
-        blockExplorerUrls: ['https://testnet.tabiscan.com/'], // 区块浏览器的URL
+        rpcUrls: ['https://rpc.testnet.tabichain.com'],
+        blockExplorerUrls: ['https://testnet.tabiscan.com/'],
       };
 
       // 请求用户授权添加新的网络
       ethereum
         .request({
           method: 'wallet_addEthereumChain',
-          params: [bscNetwork],
+          params: [tabiNetwork],
         })
         .then(() => {
           toast({
