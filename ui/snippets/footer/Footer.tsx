@@ -139,7 +139,7 @@ const Footer = () => {
           symbol: 'TABI',
           decimals: 18,
         },
-        rpcUrls: ['https://rpc.testnet.tabichain.com'],
+        rpcUrls: ['https://rpc.testnetv2.tabichain.com'],
         blockExplorerUrls: ['https://testnet.tabiscan.com/'],
       };
 
