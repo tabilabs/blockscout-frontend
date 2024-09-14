@@ -132,15 +132,15 @@ const Footer = () => {
       const ethereum = window.ethereum;
 
       const tabiNetwork = {
-        chainId: '0x263d',
-        chainName: 'Tabi Testnet',
+        chainId: '0x263c',
+        chainName: 'Tabi Testnetv2',
         nativeCurrency: {
-          name: 'Tabi Testnet',
+          name: 'Tabi Testnetv2',
           symbol: 'TABI',
           decimals: 18,
         },
         rpcUrls: ['https://rpc.testnetv2.tabichain.com'],
-        blockExplorerUrls: ['https://testnet.tabiscan.com/'],
+        blockExplorerUrls: ['https://testnetv2.tabiscan.com/'],
       };
 
       // 请求用户授权添加新的网络
@@ -321,7 +321,7 @@ const Footer = () => {
           {/*<div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://github.com/tabilabs')}>*/}
           {/*  Github*/}
           {/*</div>*/}
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://faucet.testnet.tabichain.com/')}>
+          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://faucetv2.testnet.tabichain.com/')}>
             Faucet
           </div>
         </div>
