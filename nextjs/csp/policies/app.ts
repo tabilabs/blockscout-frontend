@@ -42,6 +42,7 @@ export function app(): CspDev.DirectiveDescriptor {
     'connect-src': [
       'testnet-api.tabiscan.com',
       'tabiv2-test.tabiscan.com',
+      'api-mining.tabichain.com',
       'wss://testnet-api.tabiscan.com',
       'wss://tabiv2-test.tabiscan.com',
 

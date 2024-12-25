@@ -22,6 +22,26 @@ export interface Params<R extends ResourceName> {
   fetchParams?: Pick<FetchParams, 'body' | 'method' | 'signal'>;
 }
 
+export function useApiFetchMing() {
+  const fetch = useFetch();
+
+  return React.useCallback((
+  ) => {
+    const url = 'https://api-mining.tabichain.com/api/user/stat';
+
+    return fetch(
+      url,
+      {
+        // as of today, we use cookies only
+        //    for user authentication in My account
+        //    for API rate-limits (cannot use in the condition though, but we agreed with devops team that should not be an issue)
+        // change condition here if something is changed
+        credentials: config.features.account.isEnabled ? 'include' : 'same-origin',
+      },
+    );
+  }, [ fetch ]);
+}
+
 export default function useApiFetch() {
   const fetch = useFetch();
   const queryClient = useQueryClient();

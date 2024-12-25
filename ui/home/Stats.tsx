@@ -5,7 +5,7 @@ import React from 'react';
 import { route } from 'nextjs-routes';
 
 import config from 'configs/app';
-import useApiQuery from 'lib/api/useApiQuery';
+import useApiQuery, { useApiQueryMing } from 'lib/api/useApiQuery';
 import { WEI } from 'lib/consts';
 import { HOMEPAGE_STATS } from 'stubs/stats';
 import GasInfoTooltipContent from 'ui/shared/GasInfoTooltipContent/GasInfoTooltipContent';
@@ -16,6 +16,7 @@ const hasGasTracker = config.UI.homepage.showGasTracker;
 const hasAvgBlockTime = config.UI.homepage.showAvgBlockTime;
 
 const Stats = () => {
+  const { data: addressData } = useApiQueryMing();
   const { data, isPlaceholderData, isError } = useApiQuery('homepage_stats', {
     queryOptions: {
       placeholderData: HOMEPAGE_STATS,
@@ -41,7 +42,7 @@ const Stats = () => {
   !hasGasTracker && itemsCount--;
   !hasAvgBlockTime && itemsCount--;
 
-  if (data) {
+  if (data && addressData) {
     !data.gas_prices && itemsCount--;
     data.rootstock_locked_btc && itemsCount++;
     const isOdd = Boolean(itemsCount % 2);
@@ -84,7 +85,7 @@ const Stats = () => {
         <StatsItem
           icon="wallet"
           title="Wallet addresses"
-          value={ Number(data.total_addresses).toLocaleString() }
+          value={ Number((addressData as { data: { addressCount: number } }).data.addressCount).toLocaleString() }
           _last={ isOdd ? lastItemTouchStyle : undefined }
           isLoading={ isPlaceholderData }
         />
