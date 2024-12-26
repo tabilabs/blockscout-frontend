@@ -84,7 +84,7 @@ const Stats = () => {
         <StatsItem
           icon="wallet"
           title="Wallet addresses"
-          value={ Number(data.total_addresses).toLocaleString() }
+          value={ Number(6292716).toLocaleString() }
           _last={ isOdd ? lastItemTouchStyle : undefined }
           isLoading={ isPlaceholderData }
         />
