@@ -1,6 +1,8 @@
 import type { GridProps } from '@chakra-ui/react';
 import { Box, Grid, Flex, Text, Link, VStack, Skeleton, useColorMode } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
+import { clsx as cx } from 'clsx';
+import { css } from 'goober';
 import React from 'react';
 
 import type { CustomLinksGroup } from 'types/footerLinks';
@@ -10,14 +12,12 @@ import type { ResourceError } from 'lib/api/resources';
 import useApiQuery from 'lib/api/useApiQuery';
 import useFetch from 'lib/hooks/useFetch';
 import useIssueUrl from 'lib/hooks/useIssueUrl';
+import useToast from 'lib/hooks/useToast';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
 import FooterLinkItem from './FooterLinkItem';
 import IntTxsIndexingStatus from './IntTxsIndexingStatus';
 import getApiVersionUrl from './utils/getApiVersionUrl';
-import { clsx as cx } from 'clsx'
-import { css } from 'goober'
-import useToast from 'lib/hooks/useToast';
 
 const MAX_LINKS_COLUMNS = 4;
 
@@ -93,7 +93,7 @@ const Footer = () => {
   const isDark = () => {
     const { colorMode } = useColorMode();
     return colorMode === 'dark';
-  }
+  };
 
   const openNewPage = (url: string) => {
     window.open(url, '_blank');
@@ -139,15 +139,15 @@ const Footer = () => {
           symbol: 'TABI',
           decimals: 18,
         },
-        rpcUrls: ['https://rpc.testnetv2.tabichain.com'],
-        blockExplorerUrls: ['https://testnetv2.tabiscan.com/'],
+        rpcUrls: [ 'https://rpc.testnetv2.tabichain.com' ],
+        blockExplorerUrls: [ 'https://testnetv2.tabiscan.com/' ],
       };
 
       // 请求用户授权添加新的网络
       ethereum
         .request({
           method: 'wallet_addEthereumChain',
-          params: [tabiNetwork],
+          params: [ tabiNetwork ],
         })
         .then(() => {
           toast({
@@ -172,13 +172,13 @@ const Footer = () => {
         isClosable: true,
       });
     }
-  }
+  };
 
   const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
     return (
       <Box gridArea={ gridArea }>
         <div
-          className={cx(
+          className={ cx(
             css`
           color: #2B6CB0;
           font-family: Inter;
@@ -203,15 +203,15 @@ const Footer = () => {
           @media (max-width: 480px) {
             display: none;
           }
-          `
-          )}
-          onClick={addTabiChain}
+          `,
+          ) }
+          onClick={ addTabiChain }
         >
-          <img src={'/static/metamask-icon.svg'} style={{width: 32, height: 32}}/>
+          <img src="/static/metamask-icon.svg" style={{ width: 32, height: 32 }}/>
           Add Tabi testnet
         </div>
         <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
-        <Text mt={ 3 } fontSize="xs" mr={10}>
+        <Text mt={ 3 } fontSize="xs" mr={ 10 }>
           Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
@@ -289,84 +289,136 @@ const Footer = () => {
       }}
     >
 
-      {/*{ renderNetworkInfo({ lg: 'network' }) }*/}
+      { /*{ renderNetworkInfo({ lg: 'network' }) }*/ }
       { renderProjectInfo({ lg: 'info' }) }
 
       <Flex
         gridArea={{ lg: 'links-bottom' }}
-        flexDirection={'row'}
-        justifyContent={{lg: 'flex-end'}}
+        flexDirection="row"
+        justifyContent={{ lg: 'flex-end' }}
         // mb={{ base: 5, lg: 10 }}
-        mt={{base: 30, lg: 0}}
+        mt={{ base: 30, lg: 0 }}
         // _empty={{ display: 'none' }}
       >
-        <div className={cx(baseStyles.categoryWrap)}>
-          <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
-            Tabi
+        <div className={ cx(baseStyles.categoryWrap) }>
+          <div className={ cx(baseStyles.categoryTitle) } style={ isDark() ? { color: 'rgba(255, 255, 255, 0.92)' } : {} }>
+            About
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://tabichain.com/')}>
-            Home
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://www.tabichain.com/') }>
+            About Tabi
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://tabi.lol/')}>
-            Tabi Voyage
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabichain') }>
+            About Tabi
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://cdn.tabichain.com/Whitepaper1.0.pdf') }>
+          Whitepaper
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabi-or-captain-node') }>
+          Captain Node
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabichain/developer-guide/pvm') }>
+          Poly-VM
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabi.lol/') }>
+          BLOG
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://front.tabibot.com/TermsOfService.html') }>
+          Terms of use
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://front.tabibot.com/OfficialPrivacyPolicy.html') }>
+          Privacy Policy
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('mailto:Contact@tabi.lol') }>
+          Contact  Us
           </div>
         </div>
-        <div className={cx(baseStyles.categoryWrap)}>
-          <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
-            Developers
+        <div className={ cx(baseStyles.categoryWrap) }>
+          <div className={ cx(baseStyles.categoryTitle) } style={ isDark() ? { color: 'rgba(255, 255, 255, 0.92)' } : {} }>
+          Ecosystem
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://docs.tabichain.com/')}>
-            Docs
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://carnival.tabichain.com/') }>
+          Explore Ecosystem
           </div>
-          {/*<div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://github.com/tabilabs')}>*/}
-          {/*  Github*/}
-          {/*</div>*/}
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://faucetv2.testnet.tabichain.com/')}>
-            Faucet
+          { /*<div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://github.com/tabilabs')}>*/ }
+          { /*  Github*/ }
+          { /*</div>*/ }
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://docs.google.com/forms/d/1eYERwfT7yS_v_YMlL7sMXaQ8WtdQ4iS0C4BUbDhDh9o/viewform?edit_requested=true#responses') }>
+          Build
           </div>
         </div>
-        <div className={cx(baseStyles.categoryWrap)}>
-
-          <div className={cx(baseStyles.categoryTitle)} style={isDark() ? {color: 'rgba(255, 255, 255, 0.92)'} : {}}>
+        <div className={ cx(baseStyles.categoryWrap) }>
+          <div className={ cx(baseStyles.categoryTitle) } style={ isDark() ? { color: 'rgba(255, 255, 255, 0.92)' } : {} }>
+          Resources
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://linktr.ee/tabichain') }>
+          Social media
+          </div>
+          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://drive.google.com/drive/folders/15yIAEqaEM3OpFeBIJu30K-KSBtgC-03S')}>
+          Brand Assets
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://star-cheetah-437.notion.site/Tabi-Job-Description-1571ec67d85680a980acd65fc1971d10') }>
+          Careers
+          </div>
+        </div>
+        <div className={ cx(baseStyles.categoryWrap) }>
+          <div className={ cx(baseStyles.categoryTitle) } style={ isDark() ? { color: 'rgba(255, 255, 255, 0.92)' } : {} }>
+          Developers
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://github.com/tabilabs') }>
+          Github
+          </div>
+          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://carnival.tabichain.com/')}>
+          Faucet
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://testnetv2.tabiscan.com/') }>
+          Explore
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabichain') }>
+          Docs
+          </div>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://blog.tabi.lol/article/40') }>
+          Grants
+          </div>
+        </div>
+        {/* <div className={ cx(baseStyles.categoryWrap) }>
+          <div className={ cx(baseStyles.categoryTitle) } style={ isDark() ? { color: 'rgba(255, 255, 255, 0.92)' } : {} }>
             Community
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://twitter.com/Tabichain')}>
-            <img src={isDark() ? '/static/twitter-dark.svg' : '/static/twitter-light.svg'} className={cx(baseStyles.communityIcon)}/>Twitter
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://twitter.com/Tabichain') }>
+            <img src={ isDark() ? '/static/twitter-dark.svg' : '/static/twitter-light.svg' } className={ cx(baseStyles.communityIcon) }/>Twitter
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://discord.com/invite/tabichain')}>
-            <img src={isDark() ? '/static/discord-dark.svg' : '/static/discord-light.svg'} className={cx(baseStyles.communityIcon)}/>Discord
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://discord.com/invite/tabichain') }>
+            <img src={ isDark() ? '/static/discord-dark.svg' : '/static/discord-light.svg' } className={ cx(baseStyles.communityIcon) }/>Discord
           </div>
-          <div className={cx(baseStyles.categoryItem)} style={isDark() ? {color: '#718096'} : {}} onClick={() => openNewPage('https://blog.tabi.lol/#/')}>
-            <img src={isDark() ? '/static/blog-dark.png' : '/static/blog-light.png'} className={cx(baseStyles.communityIcon)}/>Blog
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://blog.tabi.lol/#/') }>
+            <img src={ isDark() ? '/static/blog-dark.png' : '/static/blog-light.png' } className={ cx(baseStyles.communityIcon) }/>Blog
           </div>
-        </div>
+        </div> */}
       </Flex>
 
+      { /*<div className={cx(baseStyles.flexRow)} style={{gridArea: 'links-bottom'}}>*/ }
 
-      {/*<div className={cx(baseStyles.flexRow)} style={{gridArea: 'links-bottom'}}>*/}
-
-
-      {/*</div>*/}
-      {/*<Grid*/}
-      {/*  gridArea={{ lg: 'links-bottom' }}*/}
-      {/*  gap={ 1 }*/}
-      {/*  gridTemplateColumns={{*/}
-      {/*    base: 'repeat(auto-fill, 160px)',*/}
-      {/*    lg: 'repeat(3, 160px)',*/}
-      {/*    xl: 'repeat(4, 160px)',*/}
-      {/*  }}*/}
-      {/*  gridTemplateRows={{*/}
-      {/*    base: 'auto',*/}
-      {/*    lg: 'repeat(3, auto)',*/}
-      {/*    xl: 'repeat(2, auto)',*/}
-      {/*  }}*/}
-      {/*  gridAutoFlow={{ base: 'row', lg: 'column' }}*/}
-      {/*  alignContent="start"*/}
-      {/*  justifyContent={{ lg: 'flex-end' }}*/}
-      {/*  mt={{ base: 8, lg: 0 }}*/}
-      {/*>*/}
-      {/*  { BLOCKSCOUT_LINKS.map(link => <FooterLinkItem { ...link } key={ link.text }/>) }*/}
-      {/*</Grid>*/}
+      { /*</div>*/ }
+      { /*<Grid*/ }
+      { /*  gridArea={{ lg: 'links-bottom' }}*/ }
+      { /*  gap={ 1 }*/ }
+      { /*  gridTemplateColumns={{*/ }
+      { /*    base: 'repeat(auto-fill, 160px)',*/ }
+      { /*    lg: 'repeat(3, 160px)',*/ }
+      { /*    xl: 'repeat(4, 160px)',*/ }
+      { /*  }}*/ }
+      { /*  gridTemplateRows={{*/ }
+      { /*    base: 'auto',*/ }
+      { /*    lg: 'repeat(3, auto)',*/ }
+      { /*    xl: 'repeat(2, auto)',*/ }
+      { /*  }}*/ }
+      { /*  gridAutoFlow={{ base: 'row', lg: 'column' }}*/ }
+      { /*  alignContent="start"*/ }
+      { /*  justifyContent={{ lg: 'flex-end' }}*/ }
+      { /*  mt={{ base: 8, lg: 0 }}*/ }
+      { /*>*/ }
+      { /*  { BLOCKSCOUT_LINKS.map(link => <FooterLinkItem { ...link } key={ link.text }/>) }*/ }
+      { /*</Grid>*/ }
     </Grid>
   );
 };
@@ -425,5 +477,5 @@ const baseStyles = {
     width: 18px;
     height: 18px;
   `,
-}
+};
 export default React.memo(Footer);
