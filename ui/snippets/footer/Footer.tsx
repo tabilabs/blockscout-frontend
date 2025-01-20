@@ -305,7 +305,7 @@ const Footer = () => {
             About
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://www.tabichain.com/') }>
-            About Tabi
+            Home
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabichain') }>
             About Tabi
