@@ -305,10 +305,10 @@ const Footer = () => {
             About
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://www.tabichain.com/') }>
-            Home
+          Home
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabichain.gitbook.io/tabichain') }>
-            About Tabi
+          About Tabi
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://cdn.tabichain.com/Whitepaper1.0.pdf') }>
           Whitepaper
