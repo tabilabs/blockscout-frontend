@@ -445,12 +445,13 @@ const baseStyles = {
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;
-    color: #1A202C;
+    color: #000;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 24px;
+    margin-bottom: 12px;
   `,
 
   categoryItem: css`
@@ -459,17 +460,17 @@ const baseStyles = {
     flex-direction: row;
     align-items: flex-start;
     align-self: stretch;
-    color: #4A5568;
+    color: #696969;
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 18px; /* 150% */
-    height: 32px;
+    margin-bottom: 6px;
     cursor: pointer;
     gap: 11px;
     &:hover {
-      text-decoration: underline;
+      color: #E73E45;
     }
   `,
 
