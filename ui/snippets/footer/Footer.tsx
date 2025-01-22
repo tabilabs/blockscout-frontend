@@ -322,10 +322,10 @@ const Footer = () => {
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://tabi.lol/') }>
           BLOG
           </div>
-          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://front.tabibot.com/TermsOfService.html') }>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://www.tabichain.com/terms-of-service.html') }>
           Terms of use
           </div>
-          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://front.tabibot.com/OfficialPrivacyPolicy.html') }>
+          <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('https://www.tabichain.com/privacy-policy.html') }>
           Privacy Policy
           </div>
           <div className={ cx(baseStyles.categoryItem) } style={ isDark() ? { color: '#718096' } : {} } onClick={ () => openNewPage('mailto:Contact@tabi.lol') }>
