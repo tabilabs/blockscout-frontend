@@ -51,7 +51,7 @@ class MyDocument extends Document {
           />
 
           { /* eslint-disable-next-line @next/next/no-sync-scripts */ }
-          <script src="/assets/env2.js"/>
+          <script src="/assets/envs.js"/>
 
           { /* FAVICON */ }
           <link
