@@ -1,7 +1,8 @@
 import isBrowser from 'lib/isBrowser';
 import * as regexp from 'lib/regexp';
 
-export const replaceQuotes = (value: string | undefined) => value?.replaceAll('\'', '"');
+export const replaceQuotes = (value: string | undefined) =>
+  value?.replaceAll('\'', '"');
 
 export const getEnvValue = (envName: string) => {
   // eslint-disable-next-line no-restricted-properties
@@ -18,7 +19,9 @@ export const getEnvValue = (envName: string) => {
   return replaceQuotes(envs[envName]);
 };
 
-export const parseEnvJson = <DataType>(env: string | undefined): DataType | null => {
+export const parseEnvJson = <DataType>(
+  env: string | undefined,
+): DataType | null => {
   try {
     return JSON.parse(env || 'null') as DataType | null;
   } catch (error) {
@@ -38,7 +41,10 @@ export const getExternalAssetFilePath = (envName: string) => {
 
 export const buildExternalAssetFilePath = (name: string, value: string) => {
   try {
-    const fileName = name.replace(/^NEXT_PUBLIC_/, '').replace(/_URL$/, '').toLowerCase();
+    const fileName = name
+      .replace(/^NEXT_PUBLIC_/, '')
+      .replace(/_URL$/, '')
+      .toLowerCase();
 
     const fileExtension = getAssetFileExtension(value);
     if (!fileExtension) {

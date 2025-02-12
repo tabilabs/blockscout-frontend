@@ -37,7 +37,6 @@ const NetworkAddToWallet = () => {
         Target: 'network',
         Wallet: wallet,
       });
-
     } catch (error) {
       toast({
         position: 'top-right',
@@ -50,7 +49,12 @@ const NetworkAddToWallet = () => {
     }
   }, [ addOrSwitchChain, provider, toast, wallet ]);
 
-  if (!provider || !wallet || !config.chain.rpcUrls.length || !feature.isEnabled) {
+  if (
+    !provider ||
+    !wallet ||
+    !config.chain.rpcUrls.length ||
+    !feature.isEnabled
+  ) {
     return null;
   }
 

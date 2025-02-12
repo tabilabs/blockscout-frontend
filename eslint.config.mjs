@@ -20,25 +20,44 @@ import tseslint from 'typescript-eslint';
 
 const RESTRICTED_MODULES = {
   paths: [
-    { name: 'dayjs', message: 'Please use lib/date/dayjs.ts instead of directly importing dayjs' },
-    { name: '@chakra-ui/icons', message: 'Using @chakra-ui/icons is prohibited. Please use regular svg-icon instead (see examples in "icons/" folder)' },
-    { name: '@metamask/providers', message: 'Please lazy-load @metamask/providers or use useProvider hook instead' },
-    { name: '@metamask/post-message-stream', message: 'Please lazy-load @metamask/post-message-stream or use useProvider hook instead' },
-    { name: 'playwright/TestApp', message: 'Please use render() fixture from test() function of playwright/lib module' },
+    {
+      name: 'dayjs',
+      message:
+        'Please use lib/date/dayjs.ts instead of directly importing dayjs',
+    },
+    {
+      name: '@chakra-ui/icons',
+      message:
+        'Using @chakra-ui/icons is prohibited. Please use regular svg-icon instead (see examples in "icons/" folder)',
+    },
+    {
+      name: '@metamask/providers',
+      message:
+        'Please lazy-load @metamask/providers or use useProvider hook instead',
+    },
+    {
+      name: '@metamask/post-message-stream',
+      message:
+        'Please lazy-load @metamask/post-message-stream or use useProvider hook instead',
+    },
+    {
+      name: 'playwright/TestApp',
+      message:
+        'Please use render() fixture from test() function of playwright/lib module',
+    },
     {
       name: '@chakra-ui/react',
-      importNames: [ 'Popover', 'Menu', 'PinInput', 'useToast', 'Skeleton' ],
-      message: 'Please use corresponding component or hook from ui/shared/chakra component instead',
+      importNames: ['Popover', 'Menu', 'PinInput', 'useToast', 'Skeleton'],
+      message:
+        'Please use corresponding component or hook from ui/shared/chakra component instead',
     },
     {
       name: 'next/link',
-      importNames: [ 'default' ],
+      importNames: ['default'],
       message: 'Please use ui/shared/NextLink component instead',
     },
   ],
-  patterns: [
-    'icons/*',
-  ],
+  patterns: ['icons/*'],
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -49,16 +68,18 @@ const gitignorePath = path.resolve(__dirname, '.gitignore');
 export default tseslint.config(
   includeIgnoreFile(gitignorePath),
 
-  { files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}', '**/*.pw.tsx' ] },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}', '**/*.pw.tsx'] },
 
-  { ignores: [
-    'deploy/tools/',
-    'public/',
-    'theme/dist/',
-    '.git/',
-    'theme/webpack.config.js',
-    'next.config.js',
-  ] },
+  {
+    ignores: [
+      'deploy/tools/',
+      'public/',
+      'theme/dist/',
+      '.git/',
+      'theme/webpack.config.js',
+      'next.config.js',
+    ],
+  },
 
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 
@@ -79,51 +100,55 @@ export default tseslint.config(
       globals: jestPlugin.environments.globals.globals,
     },
     rules: {
-      '@typescript-eslint/array-type': [ 'error', {
-        'default': 'generic',
-        readonly: 'generic',
-      } ],
-      '@typescript-eslint/consistent-type-imports': [ 'error' ],
-      '@typescript-eslint/naming-convention': [ 'error',
+      '@typescript-eslint/array-type': [
+        'error',
+        {
+          default: 'generic',
+          readonly: 'generic',
+        },
+      ],
+      '@typescript-eslint/consistent-type-imports': ['error'],
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
           selector: 'default',
-          format: [ 'camelCase' ],
+          format: ['camelCase'],
           leadingUnderscore: 'allow',
           trailingUnderscore: 'forbid',
         },
         {
           selector: 'import',
           leadingUnderscore: 'allow',
-          format: [ 'camelCase', 'PascalCase' ],
+          format: ['camelCase', 'PascalCase'],
         },
         {
           selector: 'class',
-          format: [ 'PascalCase' ],
+          format: ['PascalCase'],
         },
         {
           selector: 'enum',
-          format: [ 'PascalCase', 'UPPER_CASE' ],
+          format: ['PascalCase', 'UPPER_CASE'],
         },
         {
           selector: 'enumMember',
-          format: [ 'camelCase', 'PascalCase', 'UPPER_CASE' ],
+          format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         },
         {
           selector: 'function',
-          format: [ 'camelCase', 'PascalCase' ],
+          format: ['camelCase', 'PascalCase'],
         },
         {
           selector: 'interface',
-          format: [ 'PascalCase' ],
+          format: ['PascalCase'],
         },
         {
           selector: 'method',
-          format: [ 'camelCase', 'snake_case', 'UPPER_CASE' ],
+          format: ['camelCase', 'snake_case', 'UPPER_CASE'],
           leadingUnderscore: 'allow',
         },
         {
           selector: 'parameter',
-          format: [ 'camelCase', 'PascalCase' ],
+          format: ['camelCase', 'PascalCase'],
           leadingUnderscore: 'allow',
         },
         {
@@ -132,36 +157,42 @@ export default tseslint.config(
         },
         {
           selector: 'typeAlias',
-          format: [ 'PascalCase' ],
+          format: ['PascalCase'],
         },
         {
           selector: 'typeLike',
-          format: [ 'PascalCase' ],
+          format: ['PascalCase'],
         },
         {
           selector: 'typeParameter',
-          format: [ 'PascalCase', 'UPPER_CASE' ],
+          format: ['PascalCase', 'UPPER_CASE'],
         },
         {
           selector: 'variable',
-          format: [ 'camelCase', 'PascalCase', 'UPPER_CASE' ],
+          format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
           leadingUnderscore: 'allow',
         },
       ],
-      '@typescript-eslint/no-empty-function': [ 'off' ],
-      '@typescript-eslint/no-unused-vars': [ 'error', { caughtErrors: 'none', ignoreRestSiblings: true } ],
+      '@typescript-eslint/no-empty-function': ['off'],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { caughtErrors: 'none', ignoreRestSiblings: true },
+      ],
       '@typescript-eslint/no-use-before-define': 'off',
-      '@typescript-eslint/no-useless-constructor': [ 'error' ],
-      '@typescript-eslint/no-explicit-any': [ 'error', { ignoreRestArgs: true } ],
-      '@typescript-eslint/no-unused-expressions': [ 'error', {
-        allowShortCircuit: true,
-        allowTernary: true,
-      } ],
+      '@typescript-eslint/no-useless-constructor': ['error'],
+      '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+        },
+      ],
     },
   },
   {
     // disable type-aware linting on JS files
-    files: [ '**/*.{js,mjs}' ],
+    files: ['**/*.{js,mjs}'],
     ...tseslint.configs.disableTypeChecked,
   },
 
@@ -171,39 +202,51 @@ export default tseslint.config(
     },
     rules: {
       'react/jsx-key': 'error',
-      'react/jsx-no-bind': [ 'error', {
-        ignoreRefs: true,
-      } ],
-      'react/jsx-curly-brace-presence': [ 'error', {
-        props: 'never',
-        children: 'never',
-      } ],
-      'react/jsx-curly-spacing': [ 'error', {
-        when: 'always',
-        children: true,
-        spacing: {
-          objectLiterals: 'never',
+      // 'react/jsx-no-bind': [ 'error', {
+      //   ignoreRefs: true,
+      // } ],
+      'react/jsx-curly-brace-presence': [
+        'error',
+        {
+          props: 'never',
+          children: 'never',
         },
-      } ],
-      'react/jsx-equals-spacing': [ 'error', 'never' ],
-      'react/jsx-fragments': [ 'error', 'syntax' ],
+      ],
+      'react/jsx-curly-spacing': [
+        'error',
+        {
+          when: 'always',
+          children: true,
+          spacing: {
+            objectLiterals: 'never',
+          },
+        },
+      ],
+      'react/jsx-equals-spacing': ['error', 'never'],
+      'react/jsx-fragments': ['error', 'syntax'],
       'react/jsx-no-duplicate-props': 'error',
       'react/jsx-no-target-blank': 'off',
       'react/jsx-no-useless-fragment': 'error',
-      'react/jsx-tag-spacing': [ 'error', {
-        afterOpening: 'never',
-        beforeSelfClosing: 'never',
-        closingSlash: 'never',
-      } ],
-      'react/jsx-wrap-multilines': [ 'error', {
-        declaration: 'parens-new-line',
-        assignment: 'parens-new-line',
-        'return': 'parens-new-line',
-        arrow: 'parens-new-line',
-        condition: 'parens-new-line',
-        logical: 'parens-new-line',
-        prop: 'parens-new-line',
-      } ],
+      'react/jsx-tag-spacing': [
+        'error',
+        {
+          afterOpening: 'never',
+          beforeSelfClosing: 'never',
+          closingSlash: 'never',
+        },
+      ],
+      'react/jsx-wrap-multilines': [
+        'error',
+        {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'parens-new-line',
+          prop: 'parens-new-line',
+        },
+      ],
       'react/no-access-state-in-setstate': 'error',
       'react/no-deprecated': 'error',
       'react/no-direct-mutation-state': 'error',
@@ -213,7 +256,7 @@ export default tseslint.config(
       'react/no-string-refs': 'off',
       'react/no-unknown-property': 'error',
       'react/no-unused-state': 'error',
-      'react/require-optimization': [ 'error' ],
+      'react/require-optimization': ['error'],
       'react/void-dom-elements-no-children': 'error',
     },
   },
@@ -234,7 +277,7 @@ export default tseslint.config(
 
   {
     ...playwrightPlugin.configs['flat/recommended'],
-    files: [ '**/*.pw.tsx' ],
+    files: ['**/*.pw.tsx'],
     rules: {
       ...playwrightPlugin.configs['flat/recommended'].rules,
       'playwright/no-standalone-expect': 'off', // this rules does not work correctly with extended test functions
@@ -243,7 +286,7 @@ export default tseslint.config(
 
   {
     plugins: { 'react-hooks': reactHooksPlugin },
-    ignores: [ '**/*.pw.tsx', 'playwright/**' ],
+    ignores: ['**/*.pw.tsx', 'playwright/**'],
     rules: {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
@@ -251,7 +294,7 @@ export default tseslint.config(
   },
 
   {
-    files: [ '**/*.test.{ts,js,jsx,tsx}' ],
+    files: ['**/*.test.{ts,js,jsx,tsx}'],
     plugins: { jest: jestPlugin },
     languageOptions: {
       globals: jestPlugin.environments.globals.globals,
@@ -262,7 +305,7 @@ export default tseslint.config(
 
   {
     plugins: {
-      'import': importPlugin,
+      import: importPlugin,
     },
     rules: {
       'import/no-duplicates': 'error',
@@ -281,7 +324,7 @@ export default tseslint.config(
           groups: [
             'module',
             '/types/',
-            [ '/^nextjs/' ],
+            ['/^nextjs/'],
             [
               '/^configs/',
               '/^data/',
@@ -296,7 +339,7 @@ export default tseslint.config(
               '/^theme/',
               '/^ui/',
             ],
-            [ 'parent', 'sibling', 'index' ],
+            ['parent', 'sibling', 'index'],
           ],
           alphabetize: { order: 'asc', ignoreCase: true },
         },
@@ -326,60 +369,81 @@ export default tseslint.config(
     },
     rules: {
       // replacement for @typescript-eslint
-      '@stylistic/indent': [ 'error', 2 ],
-      '@stylistic/brace-style': [ 'error', '1tbs' ],
-      '@stylistic/member-delimiter-style': [ 'error' ],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/member-delimiter-style': ['error'],
       '@stylistic/type-annotation-spacing': 'error',
 
       // replacement for eslint
-      '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
-      '@stylistic/arrow-spacing': [ 'error', { before: true, after: true } ],
-      '@stylistic/comma-dangle': [ 'error', 'always-multiline' ],
-      '@stylistic/comma-spacing': [ 'error' ],
-      '@stylistic/comma-style': [ 'error', 'last' ],
-      '@stylistic/curly-newline': [ 'error', { multiline: true, minElements: 1 } ],
+      '@stylistic/array-bracket-spacing': ['error', 'always'],
+      '@stylistic/arrow-spacing': ['error', { before: true, after: true }],
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/comma-spacing': ['error'],
+      '@stylistic/comma-style': ['error', 'last'],
+      '@stylistic/curly-newline': [
+        'error',
+        { multiline: true, minElements: 1 },
+      ],
       '@stylistic/eol-last': 'error',
-      '@stylistic/jsx-quotes': [ 'error', 'prefer-double' ],
-      '@stylistic/key-spacing': [ 'error', {
-        beforeColon: false,
-        afterColon: true,
-      } ],
+      '@stylistic/jsx-quotes': ['error', 'prefer-double'],
+      '@stylistic/key-spacing': [
+        'error',
+        {
+          beforeColon: false,
+          afterColon: true,
+        },
+      ],
       '@stylistic/keyword-spacing': 'error',
-      '@stylistic/linebreak-style': [ 'error', 'unix' ],
-      '@stylistic/lines-around-comment': [ 'error', {
-        beforeBlockComment: true,
-        allowBlockStart: true,
-      } ],
-      '@stylistic/no-mixed-operators': [ 'error', {
-        groups: [
-          [ '&&', '||' ],
-        ],
-      } ],
+      '@stylistic/linebreak-style': ['error', 'unix'],
+      '@stylistic/lines-around-comment': [
+        'error',
+        {
+          beforeBlockComment: true,
+          allowBlockStart: true,
+        },
+      ],
+      '@stylistic/no-mixed-operators': [
+        'error',
+        {
+          groups: [['&&', '||']],
+        },
+      ],
       '@stylistic/no-mixed-spaces-and-tabs': 'error',
-      '@stylistic/no-multiple-empty-lines': [ 'error', {
-        max: 1,
-        maxEOF: 0,
-        maxBOF: 0,
-      } ],
+      '@stylistic/no-multiple-empty-lines': [
+        'error',
+        {
+          max: 1,
+          maxEOF: 0,
+          maxBOF: 0,
+        },
+      ],
       '@stylistic/no-multi-spaces': 'error',
       '@stylistic/no-trailing-spaces': 'error',
-      '@stylistic/object-curly-spacing': [ 'error', 'always' ],
-      '@stylistic/operator-linebreak': [ 'error', 'after' ],
-      '@stylistic/quote-props': [ 'error', 'as-needed', {
-        keywords: true,
-        numbers: true,
-      } ],
-      '@stylistic/quotes': [ 'error', 'single', {
-        allowTemplateLiterals: true,
-      } ],
-      '@stylistic/semi': [ 'error', 'always' ],
-      '@stylistic/space-before-function-paren': [ 'error', 'never' ],
-      '@stylistic/space-before-blocks': [ 'error', 'always' ],
-      '@stylistic/space-in-parens': [ 'error', 'never' ],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/operator-linebreak': ['error', 'after'],
+      '@stylistic/quote-props': [
+        'error',
+        'as-needed',
+        {
+          keywords: true,
+          numbers: true,
+        },
+      ],
+      '@stylistic/quotes': [
+        'error',
+        'single',
+        {
+          allowTemplateLiterals: true,
+        },
+      ],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/space-before-function-paren': ['error', 'never'],
+      '@stylistic/space-before-blocks': ['error', 'always'],
+      '@stylistic/space-in-parens': ['error', 'never'],
       '@stylistic/space-infix-ops': 'error',
       '@stylistic/space-unary-ops': 'off',
-      '@stylistic/template-curly-spacing': [ 'error', 'always' ],
-      '@stylistic/wrap-iife': [ 'error', 'inside' ],
+      '@stylistic/template-curly-spacing': ['error', 'always'],
+      '@stylistic/wrap-iife': ['error', 'inside'],
     },
   },
 
@@ -389,38 +453,45 @@ export default tseslint.config(
       'no-use-before-define': 'off',
       'no-useless-constructor': 'off',
       'no-unused-vars': 'off',
-      'no-empty': [ 'error', { allowEmptyCatch: true } ],
+      'no-empty': ['error', { allowEmptyCatch: true }],
       'no-unused-expressions': 'off',
 
       // this is checked by typescript compiler
       'no-redeclare': 'off',
 
       // rules customizations
-      eqeqeq: [ 'error', 'allow-null' ],
-      'id-match': [ 'error', '^[\\w$]+$' ],
-      'max-len': [ 'error', 160, 4 ],
+      eqeqeq: ['error', 'allow-null'],
+      'id-match': ['error', '^[\\w$]+$'],
+      'max-len': ['error', 180, 4],
       'no-console': 'error',
-      'no-implicit-coercion': [ 'error', {
-        number: true,
-        'boolean': true,
-        string: true,
-      } ],
+      'no-implicit-coercion': [
+        'error',
+        {
+          number: true,
+          boolean: true,
+          string: true,
+        },
+      ],
       'no-nested-ternary': 'error',
       'no-multi-str': 'error',
       'no-spaced-func': 'error',
       'no-with': 'error',
       'object-shorthand': 'off',
-      'one-var': [ 'error', 'never' ],
+      'one-var': ['error', 'never'],
       'prefer-const': 'error',
 
       // restricted imports and properties
-      'no-restricted-imports': [ 'error', RESTRICTED_MODULES ],
-      'no-restricted-properties': [ 2, {
-        object: 'process',
-        property: 'env',
-        // FIXME: restrict the rule only NEXT_PUBLIC variables
-        message: 'Please use configs/app/index.ts to import any NEXT_PUBLIC environment variables. For other properties please disable this rule for a while.',
-      } ],
+      'no-restricted-imports': ['error', RESTRICTED_MODULES],
+      'no-restricted-properties': [
+        2,
+        {
+          object: 'process',
+          property: 'env',
+          // FIXME: restrict the rule only NEXT_PUBLIC variables
+          message:
+            'Please use configs/app/index.ts to import any NEXT_PUBLIC environment variables. For other properties please disable this rule for a while.',
+        },
+      ],
     },
   },
   {
@@ -439,5 +510,5 @@ export default tseslint.config(
       // for configs allow to consume env variables from process.env directly
       'no-restricted-properties': 'off',
     },
-  },
+  }
 );
