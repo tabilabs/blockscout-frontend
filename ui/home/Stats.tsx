@@ -5,7 +5,7 @@ import React from 'react';
 import type { HomeStatsWidgetId } from 'types/homepage';
 
 import config from 'configs/app';
-import useApiQuery from 'lib/api/useApiQuery';
+import useApiQuery, { useApiQueryMing } from 'lib/api/useApiQuery';
 import { WEI } from 'lib/consts';
 import { HOMEPAGE_STATS } from 'stubs/stats';
 import GasInfoTooltip from 'ui/shared/gas/GasInfoTooltip';
@@ -17,6 +17,7 @@ import StatsWidget from 'ui/shared/stats/StatsWidget';
 const rollupFeature = config.features.rollup;
 
 const Stats = () => {
+  const { data: addressData } = useApiQueryMing();
   const [ hasGasTracker, setHasGasTracker ] = React.useState(config.features.gasTracker.isEnabled);
   const { data, isPlaceholderData, isError, dataUpdatedAt } = useApiQuery('stats', {
     queryOptions: {
@@ -142,7 +143,7 @@ const Stats = () => {
         id: 'wallet_addresses' as const,
         icon: 'wallet' as const,
         label: 'Wallet addresses',
-        value: Number(data.total_addresses).toLocaleString(),
+        value: addressData ? Number((addressData as { data: { addressCount: number } }).data.addressCount).toLocaleString():'0',
         isLoading,
       },
       hasGasTracker && data.gas_prices && {

@@ -59,6 +59,7 @@ export function app(): CspDev.DirectiveDescriptor {
 
       // github api (used for Stylus contract verification)
       'api.github.com',
+      'api-mining.tabichain.com',
     ].filter(Boolean),
 
     'script-src': [

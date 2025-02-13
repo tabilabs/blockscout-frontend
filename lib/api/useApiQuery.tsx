@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { Params as FetchParams } from 'lib/hooks/useFetch';
 
 import type { ResourceError, ResourceName, ResourcePathParams, ResourcePayload } from './resources';
-import useApiFetch from './useApiFetch';
+import useApiFetch, { useApiFetchMing } from './useApiFetch';
 
 export interface Params<R extends ResourceName, E = unknown, D = ResourcePayload<R>> {
   pathParams?: ResourcePathParams<R>;
@@ -37,5 +37,20 @@ export default function useApiQuery<R extends ResourceName, E = unknown, D = Res
       return apiFetch(resource, { pathParams, queryParams, logError, fetchParams: { ...fetchParams, signal } }) as Promise<ResourcePayload<R>>;
     },
     ...queryOptions,
+  });
+}
+
+export function useApiQueryMing() {
+  const apiFetch = useApiFetchMing();
+
+  return useQuery({
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
+    queryKey: [ 'ming-stat' ],
+    queryFn: async() => {
+      // all errors and error typing is handled by react-query
+      // so error response will never go to the data
+      // that's why we are safe here to do type conversion "as Promise<ResourcePayload<R>>"
+      return apiFetch();
+    },
   });
 }
